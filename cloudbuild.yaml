@@ -3,7 +3,7 @@ steps:
   args:
     - functions
     - deploy
-    - fetch_waqi
+    - fetch_waqi_data
     - --gen2
     - --runtime=python311
     - --region=asia-south1
