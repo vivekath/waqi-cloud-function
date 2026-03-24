@@ -1,0 +1,17 @@
+steps:
+- name: gcr.io/cloud-builders/gcloud
+  args:
+    - functions
+    - deploy
+    - fetch_waqi
+    - --gen2
+    - --runtime=python311
+    - --region=asia-south1
+    - --source=.
+    - --entry-point=fetch_waqi
+    - --trigger-http
+    - --allow-unauthenticated
+    - --set-env-vars=PROJECT_ID=project-5dd8f491-cc9c-4f1e-951,TOPIC_ID=data_engineering_topic,WAQI_TOKEN=2546085f564bc2e24a499c3d0bfbb57ffd42ed34,CITY=hyderabad
+
+options:
+  logging: CLOUD_LOGGING_ONLY
