@@ -33,3 +33,35 @@ def fetch_waqi_data(request):
     )
 
     return "Published", 200
+
+"""
+PROJECT_ID="project-5dd8f491-cc9c-4f1e-951"
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+CLOUDBUILD_SA="$PROJECT_NUMBER@cloudbuild.gserviceaccount.com"
+
+# Cloud Functions Developer
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$CLOUDBUILD_SA" \
+  --role="roles/cloudfunctions.developer"
+
+# Service Account User
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$CLOUDBUILD_SA" \
+  --role="roles/iam.serviceAccountUser"
+
+# For Gen 2 functions, also needed:
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$CLOUDBUILD_SA" \
+  --role="roles/run.admin"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$CLOUDBUILD_SA" \
+  --role="roles/eventarc.admin"
+
+# If publishing to Pub/Sub:
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$CLOUDBUILD_SA" \
+  --role="roles/pubsub.publisher"
+
+
+"""
