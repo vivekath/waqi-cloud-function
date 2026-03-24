@@ -12,7 +12,7 @@ CITY = os.environ.get("CITY")
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(PROJECT_ID, TOPIC_ID)
 
-def fetch_waqi(request):
+def fetch_waqi_data(request):
     url = f"https://api.waqi.info/feed/{CITY}/?token={WAQI_TOKEN}"
 
     response = requests.get(url, timeout=20)
