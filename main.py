@@ -3,6 +3,9 @@ import os
 import requests
 from datetime import datetime, timezone
 from google.cloud import pubsub_v1
+from google.auth import default
+
+creds, project = default()
 
 PROJECT_ID = os.environ.get("PROJECT_ID","project-5dd8f491-cc9c-4f1e-951")
 TOPIC_ID = os.environ.get("TOPIC_ID", "data_engineering_topic")
@@ -27,6 +30,7 @@ def fetch_waqi_data(request):
     }
 
     print("Publishing message:", message)
+    print(creds.service_account_email)
 
     # Publish to Pub/Sub with fully qualified topic path
     future = publisher.publish(
