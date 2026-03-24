@@ -70,7 +70,7 @@ gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
 gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
   --member="serviceAccount:306164924329-compute@developer.gserviceaccount.com" \
   --role="roles/artifactregistry.reader"
-
+-----------------
 # Cloud Build service account
 gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
   --member="serviceAccount:306164924329@cloudbuild.gserviceaccount.com" \
@@ -79,12 +79,22 @@ gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
 gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
   --member="serviceAccount:306164924329@cloudbuild.gserviceaccount.com" \
   --role="roles/artifactregistry.reader"
-
+------------------
 gcloud projects add-iam-policy-binding project-5dd8f491-cc9c-4f1e-951 \
-  --member="serviceAccount:306164924329@cloudbuild.gserviceaccount.com" \
+  --member="serviceAccount:306164924329-compute@developer.gserviceaccount.com" \
   --role="roles/pubsub.publisher"
+
+gcloud pubsub topics add-iam-policy-binding data_engineering_topic \
+  --project=project-5dd8f491-cc9c-4f1e-951 \
+  --member="serviceAccount:306164924329-compute@developer.gserviceaccount.com" \
+  --role="roles/pubsub.publisher"
+
 """
 
+"""
+gcloud pubsub topics get-iam-policy projects/project-5dd8f491-cc9c-4f1e-951/topics/data_engineering_topic
+
+"""
 # Cloud Scheduler
 """
 gcloud scheduler jobs create http waqi-hourly-job \
