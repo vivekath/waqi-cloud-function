@@ -1,3 +1,4 @@
+# !python --version => Python 3.12.12
 import json
 from datetime import datetime, timezone
 import apache_beam as beam
