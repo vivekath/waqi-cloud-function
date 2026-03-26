@@ -41,6 +41,7 @@ def fetch_waqi_data(request):
 
     return "Published", 200
 
+
 # Run the below command in cloud shell to check if the cloud function is working fine.
 """
 curl -X GET https://asia-south1-project-5dd8f491-cc9c-4f1e-951.cloudfunctions.net/fetch_waqi_data
